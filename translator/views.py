@@ -35,5 +35,39 @@ class FrenchEnglishTranslationViewSet(APIView):
     def delete(self, request, pk):
         return Response(data={}, status=None)
 
+class DeutshtoFrench(APIView):
+    def get(self, request):
+        return Response(data={}, status=None)
+    
+    def post(self, request):
+        return Response(data={}, status=None)
+    def put(self, request, pk):
+        return Response(data={}, status=None)
+    
+    def delete(self, request, pk):
+        return Response(data={}, status=None)
+
+class ArameentoFrench(APIView):
+    def get(self, request):
+        return Response(data={}, status=None)
+    
+    def post(self, request):
+        return Response(data={}, status=None)
+    def put(self, request, pk):
+        return Response(data={}, status=None)
+    
+    def delete(self, request, pk):
+        return Response(data={}, status=None)
+
+
+
+class Alltranslaition(APIView):
+    def get(self, request):
+        data = Translation.objects.all()
+        serialized_data = TranslationSerializer(data, many=True)
+        return Response(data=serialized_data.data, status=None)
+
 def index(request):
     return render(request, 'index.html', context={})
+def contact(request):
+    return render(request, 'contact.html', context={})
