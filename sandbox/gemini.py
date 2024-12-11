@@ -1,12 +1,28 @@
 import google.generativeai as genai
 
-try:
-    api_key = "AIzaSyDFLzQgss7hiZkouMA7eXkuDjqRiVdnZBc"  # Remplacez par une clé API valide
-    genai.configure(api_key=api_key)
+# Configuration initiale de l'API
+api_key = "AIzaSyDFLzQgss7hiZkouMA7eXkuDjqRiVdnZBc"  # Assurez-vous que cette clé est valide
+genai.configure(api_key=api_key)
 
-    # Sélectionnez un modèle valide
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content(str(input()))
-    print(response.text)
-except EOFError:
-    print(False)
+def translate(prompt):
+    """
+    Utilise le modèle Gemini pour traduire un texte en fonction du prompt donné.
+
+    Args:
+        prompt (str): Le texte et les instructions pour la traduction.
+
+    Returns:
+        str: Le texte traduit.
+
+    Raises:
+        ValueError: Si le modèle ne peut pas traiter la requête.
+    """
+    try:
+        # Charger le modèle
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        # Générer la traduction
+        response = model.generate_content(prompt)
+        return response.text  # Retourne le texte traduit
+    except Exception as e:
+        # Gérer les erreurs et renvoyer une exception descriptive
+        raise ValueError(f"Erreur lors de la traduction avec Gemini : {e}")
