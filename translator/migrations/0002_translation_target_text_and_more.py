@@ -13,12 +13,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='translation',
             name='target_text',
-            field=models.TextField(default=None),
+            field=models.TextField(default=None, null=True),  # Ajout de `null=True` si nécessaire
         ),
         migrations.AlterField(
             model_name='translation',
             name='source_text',
-            field=models.TextField(default=None),
+            field=models.TextField(),  # Pas de default pour un TextField
         ),
         migrations.AlterField(
             model_name='translation',

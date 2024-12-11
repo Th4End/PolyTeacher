@@ -10,4 +10,3 @@ class TranslationSerializer(serializers.ModelSerializer):
             'target_language',
             'target_text'
         ]
-    

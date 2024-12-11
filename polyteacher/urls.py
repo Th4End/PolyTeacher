@@ -1,33 +1,24 @@
 from django.contrib import admin
 from django.urls import path
-# from translator.views import index, contact
-# from translator.views import FrenchSpanishTranslationViewSet
-# from translator.views import FrenchEnglishTranslationViewSet
-# from translator.views import Alltranslaition
-# from translator.views import DeutshtoFrench
-# from translator.views import ArameentoFrench
 from translator.views import TranslationAPIView
 from django.http import HttpResponse
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
 
+schema_view = get_schema_view(
+   openapi.Info(
+      title="PolyTeacher API",
+      default_version='v1.0',
+      description="Bienvenue dans la documentation de l'api !!",
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny]
+)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/translations/', TranslationAPIView.as_view(), name='translations'),
-    path('', lambda request: HttpResponse("Documentation Redhoc : /api/translations/ [GET, POST]"))
-
-
-
-
-
-
-
-
-    # path('admin/', admin.site.urls),
-    # path('', index),
-    # path('contact',contact),
-    # path('api/monlienversmestraductions',Alltranslaition.as_view()),
-    # path('api/french_spanish_translator', FrenchSpanishTranslationViewSet.as_view(), name='french_spanish_translator'),
-    # path('api/french_english_translator', FrenchEnglishTranslationViewSet.as_view(), name='french_english_translator'),
-    # path('api/deutsh_french_translator', DeutshtoFrench.as_view(), name='deutsh_french_translator'),
-    # path('api/arameen_french_translator', ArameentoFrench.as_view(), name='arameen_french_translator'),
+    path('', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    
 
 ]

@@ -1,7 +1,7 @@
 import google.generativeai as genai
 
 # Configuration initiale de l'API
-api_key = "AIzaSyDFLzQgss7hiZkouMA7eXkuDjqRiVdnZBc"  # Assurez-vous que cette clé est valide
+api_key = "AIzaSyDqDV3MkEtHqpefhNh__nE5HQjOPhBCXE0"  # Assurez-vous que cette clé est valide
 genai.configure(api_key=api_key)
 
 def translate(prompt):
